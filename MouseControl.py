@@ -44,6 +44,7 @@ while True:
     if len(lmList) != 0:
         x1, y1 = lmList[8][1:]
         x2, y2 = lmList[12][1:]
+        f5, g5 = lmList[20][1:]
 
         # 3. Check which fingers are up
         fingers = detector.fingersUp()
@@ -77,6 +78,10 @@ while True:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]),
                 15, (0, 255, 0), cv2.FILLED)
                 mouse.click()
+
+        if fingers[1] == 0 and fingers[4] == 1:
+            cv2.circle(img, (f5, g5),10, (255, 100, 100), cv2.FILLED)
+            mouse.right_click()
 
     # 11. Frame Rate
     cTime = time.time()
